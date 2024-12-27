@@ -1,0 +1,40 @@
+table 'CC testing with logo'
+	lineageTag: 09912ad5-494b-4c3c-91b5-28c5d9f90f3b
+
+	column type
+		dataType: string
+		lineageTag: c37e97b3-f2e4-41cd-ad68-c10fdbd97b9b
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Card Icon Url'
+		dataType: string
+		lineageTag: c9c5a150-56d3-48ca-b284-510cd0ad7a49
+		summarizeBy: none
+		sourceColumn: Card Icon Url
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Card number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ad50734-558c-4c00-a556-77c76922fb68
+		summarizeBy: sum
+		sourceColumn: Card number
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'CC testing with logo' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\ayush\Documents\Power bi trial dashboards\CC testing with logo.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"type", type text}, {"Card Icon Url", type text}, {"Card number", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
