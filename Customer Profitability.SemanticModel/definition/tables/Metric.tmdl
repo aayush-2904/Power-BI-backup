@@ -1,0 +1,38 @@
+table Metric
+	lineageTag: 593c02ee-dd41-4ec8-a1a3-0ebc5391f6f1
+
+	column Metric
+		dataType: string
+		lineageTag: b109f77b-1afc-434a-b13b-fdf581fe860a
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Metric]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b91f7c3-5dd5-471a-a484-94120536397f
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Ordinal]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Metric = calculated
+		mode: import
+		source =
+				DATATABLE("Metric",STRING, "Ordinal", INTEGER,
+				    {
+				        {"# of Customers",0},
+				        {"Gross Margin",1},
+				        {"Gross Margin %",2},
+				        {"Total Revenue",3},
+				    {"Total COGS",4}
+				    })
+
+	annotation PBI_Id = e870251b1dcc4ff3971ae344f2ae6935
+

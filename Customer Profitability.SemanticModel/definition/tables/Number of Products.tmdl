@@ -1,0 +1,28 @@
+table 'Number of Products'
+	lineageTag: 504056d3-b7f3-4e8a-9478-3af7b92d8f7e
+
+	measure 'Number of Products Value' = SELECTEDVALUE('Number of Products'[Number of Products])
+		formatString: 0
+		lineageTag: 20c64d39-e86d-4869-96fd-8b73e612cca2
+
+	column 'Number of Products'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9af2ee03-5b28-4d52-8772-bbba0a6c957c
+		summarizeBy: none
+		isDataTypeInferred
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Number of Products' = calculated
+		mode: import
+		source = GENERATESERIES(1, 5, 1)
+
+	annotation PBI_Id = bfc9cd11cf8b496bbe756b0977fb0996
+
