@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.3.0/schema.json",
   "name": "0f65e9353876725fc034",
   "position": {
-    "x": 535.16474312802563,
-    "y": 119.38290423625187,
+    "x": 290.91006549523445,
+    "y": 144.08281545754537,
     "z": 0,
     "height": 299.1433692356656,
-    "width": 529.6758739677382
+    "width": 695.71416606643334
   },
   "visual": {
     "visualType": "tableEx",
@@ -14,6 +14,34 @@
       "queryState": {
         "Values": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CC testing with logo"
+                    }
+                  },
+                  "Property": "Card number"
+                }
+              },
+              "queryRef": "Sum(CC testing with logo.Card number)",
+              "nativeQueryRef": "Card number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "CC testing with logo"
+                    }
+                  },
+                  "Property": "type"
+                }
+              },
+              "queryRef": "CC testing with logo.type",
+              "nativeQueryRef": "type"
+            },
             {
               "field": {
                 "Column": {
